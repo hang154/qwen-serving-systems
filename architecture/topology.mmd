@@ -1,0 +1,7 @@
+flowchart LR
+    C[Existing consumers] --> G[Stable gateway]
+    G --> R[Request scheduler]
+    R -->|short, active &lt; 8| P[Primary 32K backend]
+    R -->|peak spillover| S[Spillover 131K backend]
+    R -->|32K–131K| S
+    P -. failure / cooldown .-> S

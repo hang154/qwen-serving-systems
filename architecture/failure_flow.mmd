@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant C as Client
+    participant R as Router
+    participant P as Primary
+    participant S as Spillover
+    C->>R: short completion
+    R->>P: attempt
+    P-->>R: connection error / HTTP 5xx
+    R->>R: mark 15s cooldown
+    R->>S: retry unchanged request
+    S-->>C: streamed response + backend header
