@@ -3,6 +3,8 @@
 Sanitized reference implementation and measured evidence for request-level
 routing across two resident Qwen3.8-27B backends.
 
+Related Hugging Face portfolio: [evidence dashboard](https://huggingface.co/spaces/hang010412/posttraining-evidence-dashboard) · [collection](https://huggingface.co/collections/hang010412/h200-training-and-post-training-portfolio-2026-09-6aba3f860fbd297da8c7fd51)
+
 ## Policy
 
 - Short requests prefer the primary backend up to eight active completions.
@@ -38,4 +40,3 @@ python scripts/secret_scan.py .
 Inference work cannot be migrated live to a GPU without a resident model.
 The validated peak-load strategy is therefore request-level spillover, not
 cross-device compute migration.
-
